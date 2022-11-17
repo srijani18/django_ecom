@@ -1,0 +1,40 @@
+<style>
+    .box-element{
+    padding: 10px;
+    margin-top:10px;
+    border-radius:2px;
+    background-color: #fff;
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    }
+    .product{
+    border-radius: 0 0 4px 4px;
+    }
+    .picture{
+    width:100%;
+    box-shadow: -1px -1px 5px -2px;
+    height: 300px;
+
+    }
+</style>
+
+
+{% extends 'store/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <img class="picture" src="{{product.imageURL}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+
+                <h4 style="display: inline-block; float :right">Rs {{product.price}}</h4>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock content %}
